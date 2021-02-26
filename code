@@ -1,0 +1,77 @@
+  class library:
+    def __init__(self,listofBooks):
+        self.books=listofBooks
+    
+    def displayofbooks(self):
+        print("books are present in library:  ")
+        for book in self.books:
+            print("  <:>  " + book)
+          
+    
+    def borrowbook(self,bookname):
+        if bookname in self.books:
+            print(f"you have been issue {bookname}. please keep it safe and return with 30days ") 
+            self.books.remove(bookname)
+            return True
+        else:
+            print("this book is already issued in other") 
+            return False   
+    
+    def returnbook(self,bookname):
+        self.books.append(bookname) 
+        print("ty for return a book !")
+
+    def feedback(self):
+        print("enter your feedback on my library  ")
+        p=input("type here:- ")
+        print(p)
+
+class student:
+    def requestbook(self):
+        self.book=input("enter the book you want to borrow : ")
+        return self.book
+
+    def returnbook(self):
+        self.book=input("enter the book name you want to return:   ")
+        return self.book    
+    
+
+if __name__ == "__main__":
+    centralibrary=library(["algorithm","datastr.","c","java","python","math","computer Network" ,"dbms","TCS"])
+    student= student()
+    centralibrary.displayofbooks()
+    print()
+    
+
+    while(True):
+        welcomemsg='''=====welcome To library======
+        please choose option :
+        1: list of all books 
+        2: request of books
+        3: return a books
+        4: exit of library
+        5: enter your feedback
+        '''
+        print(welcomemsg)
+        a=int(input("enter your choice:  "))
+        if a == 1 :
+            p=input("enter your name : ")
+            print(f"{p} welcome to my library")
+            print("choose book !")
+            centralibrary.displayofbooks()
+        elif a == 2 :
+            centralibrary.borrowbook(student.requestbook())
+        elif a == 3 :
+            centralibrary.returnbook(student.returnbook())
+        elif a == 4 :
+            print("ty to come for my library")
+            exit()
+        elif a== 5:
+            centralibrary.feedback()
+            s=input(f"enter your feedback   1: {'good'}, 2: {'ok'}, 3:{'bad'}  pls type:   ")
+            print(s)
+        else:
+            print("invalid choice")  
+            
+
+        
